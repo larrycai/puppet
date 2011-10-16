@@ -1,26 +1,14 @@
-node "puppet3" {
+node default {
   include tomcat
   tomcat::deployment { "SimpleServlet":
-      path => 'puppet:///modules/tomcat/war/SimpleServlet.war',
+      path => '/etc/puppet/modules/tomcat/files/war/SimpleServlet.war',
   }
 
-}
-node "puppet1" {
-  info "In node for ubuntu"
-  include apache
-  apache::vhost { 'puppet1':
+  apache::vhost { 'ubuntu':
     port => 80,
-    docroot => '/var/www/puppet1',
+    docroot => '/var/www/ubuntu',
     ssl => false,
     priority => 10,
-    serveraliases => 'puppet1',
-  }
-}
-node "puppet2" {
-   
-  include tomcat
-
-  tomcat::deployment { "SimpleServlet":
-      path => 'puppet:///modules/tomcat/war/SimpleServlet.war',
+    serveraliases => 'ubuntu',
   }
 }

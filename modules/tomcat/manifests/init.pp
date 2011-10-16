@@ -13,7 +13,7 @@ class tomcat {
     include_src => false,
   }
   file { "/var/cache/debconf/sun-java6.preseed":
-    source => "puppet:///files/sun-java6.preseed",
+    source => "/etc/puppet/files/sun-java6.preseed",
     ensure => present
   }
   package { "sun-java6-jdk":
